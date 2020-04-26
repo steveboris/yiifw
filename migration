@@ -1,0 +1,18 @@
+php yii migrate/history -> to see the migration history
+
+php yii migrate/up  -> run the migration
+
+php yii migrate/down -> use after applying migrations revert the last migration
+php yii migrate/down 6 -> Use this to revert the last 6 migrations
+php yii migrate/down all -> to revert all the migrations
+
+php yii migrate/create --migrationPath=@app/migrations/db migration_name -> to create a migration into the db folder under the migrations folder
+
+php yii migrate/create name -> to create a migration
+php yii migrate/create create_user1_table --fields="username:string(55):notNull:unique,email:string:notNull" -> create table user1 with some fields
+php yii migrate/create add_status_column_created_at_column_to_user1_table --fields="status:boolean:defaultValue(1),created_at:integer" -> to add column to user1 table
+php yii migrate/create drop_email_column_from_user1_table --fields="email:string(255)"
+
+php yii migrate/create create_post1_table --fields="title:string,body:text,created_at:integer:notNull:foreignKey(user1)" -> table with foreignKey
+php yii migrate/create create_junction_table_for_user1_and_post1_tables --fields="created_at:integer" -> join two tables
+
